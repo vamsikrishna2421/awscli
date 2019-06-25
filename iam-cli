@@ -1,0 +1,23 @@
+#TO LIST ALL THE IAM USERS
+    aws iam list-users
+#ALLOW INBOUND FOR PORT 22 IN SECURITY GROUP
+    aws ec2 authorize-security-group-ingress --group-name MySecurityGroup \
+    --ip-permissions '{"FromPort":22,"ToPort":22,"IpProtocol":"tcp","IpRanges":[{"CidrIp":"0.0.0.0/0"}]}'
+#TO USE PERMISSIONS FROM A FILE TO MAKE CHANGES TO SECURITY group
+    aws ec2 authorize-security-group-ingress --group-name MySecurityGroup \
+    --ip-permissions file://ip_perms.json
+#OR USING URL
+    aws ec2 authorize-security-group-ingress --group-name MySecurityGroup \
+        --ip-permissions http://mybucket.s3.amazonaws.com/ip_perms.json
+#Get a list of IAM user names:
+    aws iam list-users --query Users[].UserName
+[
+    "lekkala",
+    "Rushi"
+]
+#key and size of all objects in a s3 bucket
+    aws s3api list-objects --bucket vamsi-akkampeta-temple --query Contents[].[Key,Size]
+
+#display all ec2 instances with their id,state,Name tag(if exist)
+    aws ec2 describe-instances --query \
+  'Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key==`Name`] | [0].Value]' --output table
