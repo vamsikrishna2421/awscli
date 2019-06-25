@@ -1,0 +1,50 @@
+aws configure --profile <profilename>
+
+--profile <string>
+--region <string>
+--output <string>
+--endpoint-url <string>
+        Specifies the URL to send the request to. For most commands, the AWS CLI automatically determines the URL based on the selected service and the specified AWS Region. However, some commands require that you specify an account-specific URL. You can also configure some AWS services to host an endpoint directly within your private VPC, which might then need to be specified.
+--debug
+        to enable debug logging
+--no-paginate
+        disables automatic pagination of the output
+--query <string>
+--version
+--color <string>
+        Specifies support for color output. Valid values are on, off, and auto. The default value is auto.
+--no-sign-request
+        disables signing the HTTP requests to the AWS service endpoint. This prevents credentials from being loade
+--ca-bundle <string>
+--cli-read-timeout <integer>
+        Specifies the maximum socket read time in seconds. If the value is set to 0, the socket read waits indefinitely (is blocking) and doesn't timeout.
+--cli-connect-timeout <integer>
+        Specifies the maximum socket connect time in seconds. If the value is set to 0, the socket connect waits indefinitely (is blocking) and doesn't timeout
+
+
+
+When you provide one or more of these options as command line parameters, it overrides the default configuration or any corresponding profile setting for that single command.
+$ aws ec2 describe-instances --output table --region us-east-1
+-------------------
+|DescribeInstances|
++-----------------+
+$ aws ec2 describe-instances --output table --region us-west-1
+-------------------
+|DescribeInstances|
++-----------------+
+$ aws ec2 describe-instances --output table --region us-west-2
+------------------------------------------------------------------------------
+|                              DescribeInstances                             |
++----------------------------------------------------------------------------+
+||                               Reservations                               ||
+|+-------------------------------------+------------------------------------+|
+||  OwnerId                            |  012345678901                      ||
+||  ReservationId                      |  r-abcdefgh                        ||
+|+-------------------------------------+------------------------------------+|
+|||                                Instances                               |||
+||+------------------------+-----------------------------------------------+||
+|||  AmiLaunchIndex        |  0                                            |||
+|||  Architecture          |  x86_64                                       |||
+...
+
+

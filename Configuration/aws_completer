@@ -1,0 +1,44 @@
+Command Completion
+
+    Identify Your Shell
+    Locate the AWS Completer
+    Add the Completer's Folder to Your Path
+    Enable Command Completion
+    Test Command Completion
+
+```Identify Your Shell
+$ echo $SHELL
+/bin/bash
+
+$ ps
+  PID TTY          TIME CMD
+ 2148 pts/1    00:00:00 bash
+ 8756 pts/1    00:00:00 ps
+
+
+
+``` Locate the AWS Completer
+$ which aws_completer
+/usr/local/aws/bin/aws_completer
+
+$ find / -name aws_completer
+/usr/local/aws/bin/aws_completer
+
+
+
+```Add the Completer's Folder to Your Path
+export PATH=/usr/local/aws/bin/aws_completer:$PATH
+Reload the profile into the current session to put those changes into effect. Replace .bash_profile with the name of the shell script you discovered in the first section.
+    $ source ~/.bash_profile
+
+
+
+```Enable Command Completion
+$ complete -C '/usr/local/aws/bin/aws_completer' aws
+
+
+
+```Test Command Completion
+$ aws s[TAB]
+s3              ses             sqs             sts             swf
+s3api           sns             storagegateway  support

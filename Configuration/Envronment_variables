@@ -1,0 +1,18 @@
+exporting configurations will live only for the session
+
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_SESSION_TOKEN
+AWS_DEFAULT_REGION
+AWS_DEFAULT_OUTPUT
+AWS_DEFAULT_PROFILE
+AWS_CA_BUNDLE   --Specifies the path to a certificate bundle to use for HTTPS certificate validation
+AWS_SHARED_CREDENTIALS_FILE --Specifies the location of the file that the AWS CLI uses to store access keys (the default is ~/.aws/credentials).
+AWS_CONFIG_FILE --Specifies the location of the file that the AWS CLI uses to store configuration profiles (the default is ~/.aws/config).
+
+
+
+EX:
+$ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+$ export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+$ export AWS_DEFAULT_REGION=us-west-2

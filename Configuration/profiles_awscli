@@ -1,0 +1,5 @@
+Using Profiles with the AWS CLI
+    aws ec2 describe-instances --profile user1
+    
+ To set profile as default till the current session of terminal   
+    export AWS_DEFAULT_PROFILE=user1

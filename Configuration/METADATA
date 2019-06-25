@@ -1,0 +1,12 @@
+Inside the ec2-insance ,awscli is preinstalled.
+if u attach a role to ec2 , credentials are available in metadata.
+if u want to mention the metadata credentials for a profile , then use:
+credential_source = Ec2InstanceMetadata 
+
+EX:
+[profile marketingadmin]
+role_arn = arn:aws:iam::123456789012:role/marketingadminrole
+credential_source = Ec2InstanceMetadata
+
+
+When an IAM role is attached to the instance, the AWS CLI automatically and securely retrieves the credentials from the instance metadata.

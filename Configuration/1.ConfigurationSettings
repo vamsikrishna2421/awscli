@@ -1,0 +1,60 @@
+Command line options 
+        – You can specify --region, --output, and --profile as parameters on the command line.
+
+Environment variables –
+         You can store values in the environment variables: 
+                AWS_ACCESS_KEY_ID, 
+                AWS_SECRET_ACCESS_KEY, and 
+                AWS_SESSION_TOKEN. 
+        If they are present, they are used.
+
+export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials 
+export AWS_ACCESS_KEY_ID=AKIAWKHHMYNDZ45JLYFP
+export AWS_SECRET_ACCESS_KEY=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
+
+complete -C aws_completer aws
+
+
+Set region to a profile
+        aws configure set region us-west-2 --profile profile1
+Get region of a profile
+        aws configure get region --profile profile1  
+
+
+
+aws_session_token
+        Specifies an AWS session token. A session token is required only if you are using temporary 
+        security credentials. Although this can be stored in the config file, we recommend that you 
+        store this in the credentials file.
+        Can be overridden by the AWS_SESSION_TOKEN environment variable. You can't specify the session
+         token as a command line option.
+
+        aws_session_token = AQoEXAMPLEH4aoAH0gNCAPyJxz4BlCFFxWNE1OPTgk5TthT+FvwqnKwRcOIfrRh3c/LTo6UDdyJwOOvEVPvLXCrrrUtdnniCEXAMPLE/IvU1dYUg2RVAJBanLiHb4IgRmpRV3zrkuWJOgQs8IZZaIv2BXIa2R4Olgk
+
+parameter_validation
+        Specifies whether the CLI client attempts to validate parameters before sending them to the AWS service endpoint.
+        true: This is the default value. When configured, the CLI performs local validation of command line parameters.
+        false: When configured, the CLI does not validate command line parameters before sending them to the AWS service endpoint.
+        This entry does not have an equivalent environment variable or command line option.
+
+        parameter_validation = false
+
+
+These settings are all set under a top level s3 key in the config file, as shown in the following example for the development profile:
+
+        [profile development]
+        s3 =
+          max_concurrent_requests = 20
+          max_queue_size = 10000
+          multipart_threshold = 64MB
+          multipart_chunksize = 16MB
+          max_bandwidth = 50MB/s
+          use_accelerate_endpoint = true
+          addressing_style = path
+
+
+    $    The credentials file uses a different naming format than the CLI config file for named profiles. 
+    $    Include the prefix "profile" only when configuring a named profile in the config file.
+    $    Do not use profile when configuring the credentials file.
+
+
